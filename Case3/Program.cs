@@ -83,7 +83,14 @@ int GetNumber()
         {
             Console.WriteLine("Введены некорректные данные. Введите целое число:");
         }
-        else check = false;
+        else
+        {
+            check = false;
+            if (n < 0)
+            {
+                n *= -1;
+            }
+        }
     }
     return n;
 }
