@@ -10,6 +10,13 @@ int columns = GetNumber();
 Console.WriteLine("Введите количество глубины массива:");
 int depth = GetNumber();
 
+int product = rows * columns * depth;
+if (product >= 100)
+{
+    Console.WriteLine("Превышен лимит массива. Попробуйте снова с меньшими значениями.");
+    return;
+}
+
 int[,,] arrayNums = new int[rows, columns, depth];
 Fill3dArray(arrayNums);
 Print3dArray(arrayNums);
@@ -32,7 +39,7 @@ void Fill3dArray(int[,,] array)
                     if (!list.Contains(randomNumber))
                     {
                         list.Add(randomNumber);
-                        array[i, j, k] = randomNumber;
+                        array[i, j, k] =  randomNumber;
                         check = false;
                     }
                 }
@@ -47,16 +54,13 @@ void Print3dArray(int[,,] array)
     {
         for (int j = 0; j < array.GetLength(1); j++)
         {
-            Console.Write($"X:{i}, Y:{j} ");
             for (int k = 0; k < array.GetLength(2); k++)
             {
-                Console.Write($"Z:{k}: ");
-                Console.Write($"{array[i, j, k]} ");
+                Console.Write($"На позиции X: {i}, Y: {j}, Z:{k} находится значение: ");
+                Console.WriteLine($"{array[i, j, k]} ");
             }
         }
-        Console.WriteLine();
     }
-    Console.WriteLine();
 }
 
 int GetNumber()
